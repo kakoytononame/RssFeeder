@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.registration-form {
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-string {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.password-string {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.register-button{
+    margin-left: 20%;
+}

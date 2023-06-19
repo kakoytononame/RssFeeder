@@ -1,0 +1,25 @@
+﻿
+
+<head>
+    <meta charset="utf-8" />
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/login.css"/>
+</head>
+
+<div class="container">
+    <form method="post" class="login-form">
+        <div class="login-string">
+            <label for="login">Логин:</label>
+            <input type="text" id="login" name="Login" />
+        </div>
+        <div class="password-string">
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="Password" />
+        </div>
+        <button type="button" class="login-button" onclick="loginin()">Войти</button>
+        <button type="button" class="toregistration" onclick="toregistration()">Регистрация</button>
+        
+    </form>
+</div>
+
+<script src="/js/login.js"></script>
