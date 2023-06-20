@@ -12,7 +12,7 @@ using RssFeeder.Contexts;
 namespace RssFeeder.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20230619182511_InitialCreate")]
+    [Migration("20230620171200_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -77,7 +77,8 @@ namespace RssFeeder.Migrations
 
                     b.HasKey("UserId", "ItemId");
 
-                    b.HasIndex("ItemId");
+                    b.HasIndex("ItemId")
+                        .IsUnique();
 
                     b.ToTable("Readed");
                 });

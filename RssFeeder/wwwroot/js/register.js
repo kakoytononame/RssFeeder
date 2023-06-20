@@ -15,12 +15,10 @@ function register() {
     })
         .then(response => response.text())
         .then(result => {
-            // Обработка результата
-            console.log(result);
+            window.location.href = "/Home/MainPage";
         })
         .catch(error => {
             // Обработка ошибки
             console.error('Error:', error);
         });
-    window.location.href = "/Home/login";
 }

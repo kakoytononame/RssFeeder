@@ -10,5 +10,6 @@ public class IdentityUsersRssFeedersConfiguration:IEntityTypeConfiguration<Ident
     {
         builder.Ignore(p => p.RssItem);
         builder.Ignore(p => p.User);
+        builder.HasIndex(p => p.ItemId).IsUnique();
     }
 }

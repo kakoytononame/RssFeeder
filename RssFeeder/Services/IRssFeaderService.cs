@@ -1,4 +1,5 @@
-﻿using RssFeeder.Models;
+﻿using RssFeeder.DTOS;
+using RssFeeder.Models;
 
 namespace RssFeeder.Services;
 
@@ -8,5 +9,9 @@ public interface IRssFeaderService
 
     public Task Read(ReadNews news);
 
-    public Task<List<RssItem>> GetNews(int number);
+    public Task<List<RssItemWithFilters>> GetNews(Guid UserId);
+
+    public Task<List<RssItem>> Readed(Guid UserId);
+
+    public Task<List<RssItem>> UnReaded(Guid UserId);
 }

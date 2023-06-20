@@ -74,7 +74,8 @@ namespace RssFeeder.Migrations
 
                     b.HasKey("UserId", "ItemId");
 
-                    b.HasIndex("ItemId");
+                    b.HasIndex("ItemId")
+                        .IsUnique();
 
                     b.ToTable("Readed");
                 });

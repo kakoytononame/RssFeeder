@@ -13,7 +13,7 @@ services.AddApplicationServices();
 services.AddIdentityContext(configuration);
 services.AddRazorServices();
 // Add services to the container.
-/*services.AddAuthentication(options =>
+services.AddAuthentication(options =>
     {
         options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
         options.DefaultSignInScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -38,13 +38,13 @@ services.AddRazorServices();
             ),
             ValidateIssuerSigningKey = true
         };
-    });*/
-services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    });
+/*services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
         options.Cookie.Name = "AuthToken"; // Имя cookie
         options.LoginPath = "/admin/login"; // Путь для входа
-    });
+    });*/
 services.AddAuthorization(options =>
 {
     options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
@@ -74,6 +74,6 @@ app.MigrateDatabase();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=MainPage}/{id?}");
 
 app.Run();

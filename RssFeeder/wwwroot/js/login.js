@@ -15,7 +15,7 @@ function loginin() {
         .then(response => response.text())
         .then(result => {
             // Обработка результата
-            console.log(result);
+            window.location.href = "/Home/MainPage";
         })
         .catch(error => {
             // Обработка ошибки
@@ -23,5 +23,5 @@ function loginin() {
         });
 }
 function toregistration(){
-    window.location.href = "/Home";
+    window.location.href = "/Home/Register";
 }

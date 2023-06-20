@@ -1,29 +1,34 @@
 ﻿<head>
     <meta charset="utf-8" />
-    <title>Login</title>
-    <link rel="stylesheet" href="/css/login.css"/>
+    <title>News</title>
+    <link rel="stylesheet" href="/css/MainPage.css"/>
 </head>
 
 <div>
-    <table class="News">
+    <select id="filter">
+        <option>Все</option>
+        <option>Прочитанные</option>
+        <option>Непрочитанные</option>
+    </select>
+    <table class="News" id="myTable">
         <thead>
         <tr>
-            <th class="Title">Заголовок 1</th>
+            <th>Список статей</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>Строка 1, ячейка 1</td>
-        </tr>
-        <tr>
-            <td>Строка 2, ячейка 1</td>
-        </tr>
-        <tr>
-            <td>Строка 3, ячейка 1</td>
-        </tr>
         </tbody>
     </table>
+    <div id="addNews">
+        <a>Введите URL Rss Ленты</a>
+        <input type="text" id="RssUrl"/>
+        <button id="UploadRss" onclick="UploadRssNews()">Загрузить</button>
+        <a id="UploadResult"></a>
+    </div>
 </div>
-
+<script src="/js/js.cookie.js"></script>
 <script src="/js/MainPage.js"></script>
-<script>document.addEventListener("DOMContentLoaded", getNews());</script>
+<script>
+    document.addEventListener("DOMContentLoaded", getNews());
+</script>
+

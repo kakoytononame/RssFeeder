@@ -13,7 +13,7 @@ namespace donor.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Register()
         {
             return View();
         }

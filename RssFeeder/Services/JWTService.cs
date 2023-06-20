@@ -2,6 +2,7 @@
 using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
+using RssFeeder.Contexts;
 using RssFeeder.DTOS;
 using RssFeeder.Models;
 
@@ -10,6 +11,13 @@ namespace RssFeeder.Services;
 #pragma warning disable CS8603
 public class JWTService:IJWTService
 {
+
+    private readonly DBContext _dbContext;
+    
+    public JWTService(DBContext dbContext)
+    {
+        _dbContext = dbContext;
+    }
     public string Create(User user)
     {
         try
@@ -35,15 +43,14 @@ public class JWTService:IJWTService
     private ClaimsIdentity GetIdentity(User user)
     {
 
-        var _people = new List<User>() { user };
-        var person = _people.FirstOrDefault(x => x.Login == user.Login && x.Password == user.Password);
+        var _people = _dbContext.IdentityUsers.FirstOrDefault(p => p.Login == user.Login&&p.Password==user.Password);
         // ReSharper disable once InvertIf
-        if (person != null)
+        if (_people != null)
         {
             var claims = new List<Claim>
             {
-                new (ClaimsIdentity.DefaultNameClaimType, person.Login),
-                new (ClaimsIdentity.DefaultRoleClaimType,person.Role)
+                new (ClaimsIdentity.DefaultNameClaimType, _people.UserId.ToString()),
+                new (ClaimsIdentity.DefaultRoleClaimType,_people.Role),
             };
             var claimsIdentity =
                 new ClaimsIdentity(claims, "Token", ClaimsIdentity.DefaultNameClaimType,
@@ -63,7 +70,7 @@ public class JWTService:IJWTService
             // Установка времени жизни cookie (например, на 1 час)
             Expires = DateTime.Now.AddHours(1),
             // Установка флага HttpOnly для защиты от скриптового доступа
-            HttpOnly = true,
+            HttpOnly = false,
             // Установка пути, где будет доступна cookie
             Path = "/"
         };

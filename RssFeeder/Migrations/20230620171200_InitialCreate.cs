@@ -85,7 +85,8 @@ namespace RssFeeder.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Readed_ItemId",
                 table: "Readed",
-                column: "ItemId");
+                column: "ItemId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_RssFeeds_ItemId",
